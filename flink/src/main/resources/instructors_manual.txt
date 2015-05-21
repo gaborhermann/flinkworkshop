@@ -1,0 +1,5 @@
+Day 6.
+    Exercise 6.
+        IDEA logging. Open module settings../Dependencies/+/Jars or dependencies..
+        Add log4j as a dependency.
+        Configure logging.

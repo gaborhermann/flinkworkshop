@@ -1,4 +1,4 @@
-package hu.sztaki.workshop.hadoop.day2;
+package hu.sztaki.workshop.hadoop.day2.solution;
 
 import hu.sztaki.workshop.hadoop.day2.phrase.TextArrayWritable;
 import org.apache.hadoop.conf.Configured;

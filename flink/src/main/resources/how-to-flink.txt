@@ -1,0 +1,69 @@
+** SETUP LOCALLY **
+Execute these:
+	tar xzf ~/Downloads/flink-*.tgz
+	cd flink-*
+	bin/start-local.sh
+	tail log/flink-*-jobmanager-*.log
+
+Check web frontend at:
+	http://localhost:8081
+
+Run a sample job:
+	./bin/flink run ./examples/flink-java-examples-0.9.0-milestone-1-WordCount.jar
+
+See Log Files/Stdout for the results.
+
+** CREATE PROJECT **
+mvn archetype:generate -DarchetypeGroupId=org.apache.flink -DarchetypeArtifactId=flink-quickstart-java -DarchetypeVersion=0.9.0-milestone-1-hadoop1
+
+Give the parameters when asked. For example:
+	groupId: com.example.flink
+	artifactId: my-first-flink
+	version: 1.0-SNAPSHOT
+	package: com.example.flink
+
+** BUILDING IT **
+cd my-first-flink
+mvn package
+
+** RUNNING IT **
+cp target/my-first-flink-1.0-SNAPSHOT.jar ~/flink-0.9.0-milestone-1/lib/
+cd ~/flink-*
+./bin/flink run ./lib/my-first-flink-1.0-SNAPSHOT.jar -c WordCount
+
+** FIDDLE WITH CONFIGURATION **
+Exercise: 
+
+JobManager
+1. Set the RPC port to 52015.
+
+TaskManager
+2. Set the heap size to 100 megabytes
+4. Increase default parallelism and the task slots
+3. Restart the cluster and check htop
+5. Run an example job
+
+
+** IMPORT INTO IDE **
+
+IDEA:
+	1. Import project
+	2. Choose your pom.xml
+	3. Next next
+	4. Select Java JDK
+	5. Finish
+	6. Wait for resolving dependencies
+
+Eclipse:
+	1. File/Import...
+	2. Maven/Existing Maven Projects
+	3. Select root directory (the one that contains your pom.xml)
+	4. Finish
+	5. Wait for the import to happen
+
+
+** EXECUTE JOB IN/FROM IDE **
+
+1. Change the text in the WordCount
+2. Execute it locally
+3. Execute it on your cluster using remoteEnvironment
